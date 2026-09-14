@@ -56,6 +56,16 @@
     behaviors {
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_lang_toggle {
+            timeout-ms = <50>;
+            key-positions = <31 33>; // J, L (home row, K in between)
+            bindings = <&kp LANG1>;  // 한/영 전환 (Windows IME language toggle)
+        };
+    };
+
     macros {
         To1_macro: To1_macro {
             compatible = "zmk,behavior-macro";
