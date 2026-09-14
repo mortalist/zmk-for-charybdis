@@ -74,6 +74,22 @@
             bindings = <&kp LC(SPACE)>; // macOS 기본: 이전 입력 소스 선택 (Control+Space)
             layers = <2>;                // Fn+M(&tog 2)로 Mac 모드 켰을 때만 적용
         };
+
+        combo_screenshot_win {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+            key-positions = <13 14>; // Q, W
+            bindings = <&kp LG(LS(S))>; // Windows: Win+Shift+S (캡처 도구)
+            layers = <0>;
+        };
+
+        combo_screenshot_mac {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+            key-positions = <13 14>; // Q, W
+            bindings = <&kp LG(LS(N4))>; // macOS: Cmd+Shift+4 (영역 스크린샷)
+            layers = <2>;
+        };
     };
 
     macros {
