@@ -60,6 +60,14 @@
     };
 
     behaviors {
+        rclick_or_scroll: rclick_or_scroll {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RCLICK_OR_SCROLL";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&mo>, <&mkp>;
+        };
     };
 
     combos {
@@ -161,7 +169,7 @@
 &kp LEFT_SHIFT  &kp A   &kp S   &kp D         &kp F      &kp G       &kp H      &kp J      &kp K      &kp L             &kp SEMI  &kp SQT
 &kp LCTRL       &kp Z   &mt LC(X) X   &mt LC(C) C         &mt LC(V) V      &kp B       &kp N      &kp M      &kp COMMA  &kp LEFT_BRACKET  &kp FSLH  &kp MINUS
                                 &kp LEFT_ALT  &kp SPACE  &to 1       &kp LWIN   &kp SPACE
-                                              &mkp MB1   &mkp MB2    &kp ENTER
+                                              &mkp MB1   &rclick_or_scroll 1 RCLK    &kp ENTER
             >;
 
             sensor-bindings =
