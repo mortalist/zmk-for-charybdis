@@ -145,7 +145,7 @@
 &trans  &trans       &trans       &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans       &trans       &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans       &trans       &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &mt LG(Z) Z  &mt LG(X) X  &mt LG(C) C  &mt LG(V) V  &trans    &trans  &tog 2  &trans  &trans  &trans  &trans
+&trans  &mt LG(Z) Z  &mt LG(X) X  &mt LG(C) C  &mt LG(V) V  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                                   &trans       &trans       &trans    &trans  &trans
                                                &trans       &trans    &trans
             >;
