@@ -113,9 +113,9 @@
 &kp ESC         &kp N1       &kp N2       &kp N3        &kp N4         &kp N5                      &kp N6        &kp N7     &kp N8     &kp N9      &kp N0    &kp BACKSPACE
 &kp TAB         &kp Q        &kp W        &kp E         &kp R          &kp T                       &kp Y         &kp U      &kp I      &kp O       &kp P     &kp BSLH
 &kp LEFT_SHIFT  &kp A        &kp S        &kp D         &kp F          &kp G                       &kp H         &kp J      &kp K      &kp L       &kp SEMI  &kp SQT
-&kp LCTRL       &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C   &mt LC(V) V    &kp B                       &kp N         &kp M      &kp COMMA  &kp PERIOD  &kp FSLH  &tog 1
+&kp LCTRL       &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C   &mt LC(V) V    &kp B                       &kp N         &kp M      &kp COMMA  &kp PERIOD  &kp FSLH  &tog 5
                                           &kp LEFT_ALT  &kp BACKSPACE  &lt 3 CAPSLOCK              &kp LWIN      &kp SPACE
-                                                        &mkp MB1       &rclick_or_scroll 5 RCLK    &lt 1 RETURN
+                                                        &mkp MB1       &rclick_or_scroll 5 RCLK    &lt 5 RETURN
             >;
 
             sensor-bindings =
@@ -126,14 +126,17 @@
             // 编码器2：左右滚动
         };
 
+        // 비어 있음. Fn 레이어는 스크롤 판정(최상위 활성 레이어 비교) 때문에
+        // Mac 모드(2)보다 위여야 해서 layer_5로 옮겼다. 레이어 번호는 정의 순서로
+        // 정해지므로 2·3·4 번호를 유지하려면 이 자리를 비워둔 채 남겨야 한다.
         layer_1 {
             bindings = <
-&kp F1          &kp F2  &kp F3  &kp F4        &kp F5     &kp F6      &kp F7     &kp F8    &kp F9    &kp F10    &kp F11  &kp F12
-&kp CAPS        &trans  &trans  &trans        &trans     &trans      &trans     &trans    &kp UP    &trans     &trans   &trans
-&kp LEFT_SHIFT  &trans  &trans  &trans        &trans     &trans      &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&kp LCTRL       &trans  &trans  &trans        &trans     &trans      &trans     &tog 2    &trans    &trans     &trans   &tog 1
-                                &kp LEFT_ALT  &kp SPACE  &trans      &trans     &trans
-                                              &mkp MB1   &mkp MB2    &kp ENTER
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans
+                                &trans  &trans    &trans
             >;
         };
 
@@ -170,17 +173,17 @@
             >;
         };
 
-        // 스크롤 전용 플래그 레이어. 키는 전부 투명이고, 트랙볼 드라이버의
-        // scroll-layers가 "최상위 활성 레이어"와 일치해야 동작하므로
-        // Mac 모드(2)보다 높은 번호여야 한다.
+        // Fn 레이어 겸 트랙볼 스크롤 레이어.
+        // 드라이버가 scroll-layers를 "최상위 활성 레이어"와 비교하므로,
+        // Mac 모드(2)에 가려지지 않도록 그보다 높은 번호를 쓴다.
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
+&kp F1          &kp F2  &kp F3  &kp F4        &kp F5     &kp F6      &kp F7     &kp F8    &kp F9    &kp F10    &kp F11  &kp F12
+&kp CAPS        &trans  &trans  &trans        &trans     &trans      &trans     &trans    &kp UP    &trans     &trans   &trans
+&kp LEFT_SHIFT  &trans  &trans  &trans        &trans     &trans      &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
+&kp LCTRL       &trans  &trans  &trans        &trans     &trans      &trans     &tog 2    &trans    &trans     &trans   &tog 5
+                                &kp LEFT_ALT  &kp SPACE  &trans      &trans     &trans
+                                              &mkp MB1   &mkp MB2    &kp ENTER
             >;
         };
 
