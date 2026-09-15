@@ -115,7 +115,7 @@
 &kp LEFT_SHIFT  &kp A        &kp S        &kp D         &kp F          &kp G                       &kp H         &kp J      &kp K      &kp L       &kp SEMI  &kp SQT
 &kp LCTRL       &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C   &mt LC(V) V    &kp B                       &kp N         &kp M      &kp COMMA  &kp PERIOD  &kp FSLH  &tog 1
                                           &kp LEFT_ALT  &kp BACKSPACE  &lt 3 CAPSLOCK              &kp LWIN      &kp SPACE
-                                                        &mkp MB1       &rclick_or_scroll 1 RCLK    &lt 1 RETURN
+                                                        &mkp MB1       &rclick_or_scroll 5 RCLK    &lt 1 RETURN
             >;
 
             sensor-bindings =
@@ -160,6 +160,20 @@
         };
 
         layer_4 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans
+                                &trans  &trans    &trans
+            >;
+        };
+
+        // 스크롤 전용 플래그 레이어. 키는 전부 투명이고, 트랙볼 드라이버의
+        // scroll-layers가 "최상위 활성 레이어"와 일치해야 동작하므로
+        // Mac 모드(2)보다 높은 번호여야 한다.
+        layer_5 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
