@@ -99,6 +99,11 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
 
+        // 딥슬립(System OFF)에서 키 입력으로 깨어나려면 필수.
+        // 없으면 매트릭스 GPIO의 sense detection이 꺼져서, 전원을 껐다 켜기
+        // 전까지 깨어날 수 없다 (왼쪽 절반이 안 깨어나던 원인).
+        wakeup-source;
+
         diode-direction = "row2col";
 		row-gpios
             = <&gpio0 31 GPIO_ACTIVE_HIGH>
