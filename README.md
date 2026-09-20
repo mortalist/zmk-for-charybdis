@@ -8,6 +8,8 @@ Upstream: `Vzhao-L/zmk-for-charybdis` ← `HeeTuic/zmk-for-charybdis`
 
 ---
 
+핫키/숏컷 다이어그램(레이어별 이미지)은 [`docs/images/`](docs/images/) 참고.
+
 ## 레이어 구성
 
 | # | 이름 | 켜는 법 |
