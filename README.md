@@ -41,7 +41,7 @@ Upstream: `Vzhao-L/zmk-for-charybdis` ← `HeeTuic/zmk-for-charybdis`
 
 ## Mod-Tap
 
-`&mt` 전역: `tapping-term-ms=300`, `flavor=balanced`
+`&mt` 전역: `tapping-term-ms=180`, `flavor=balanced`, `hold-trigger-on-release`
 
 | 키 | 탭 | 홀드 |
 |---|---|---|
@@ -148,3 +148,23 @@ layer_5(Fn)의 오른손 쪽이 거의 비어 있어서 여기에 채우면 됨:
 편집 도구:
 - [ZMK Studio](https://zmk.studio/) — 실시간, 단 콤보·behavior 편집 불가, 저장 시 함정 1번 발생
 - [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) — 이 레포에 연결해서 GUI 편집, 저장하면 자동 커밋 + 빌드
+
+---
+
+## 작업 기록
+
+### 2026-09-20 — Z/X/C/V 홈로우 모드 롤오버(글자 순서 역전) 완화
+한글(2벌식) 입력 시 `ㅋ/ㅌ/ㅊ/ㅍ`(Z/X/C/V) 다음에 다른 손 키를 빠르게 이어 치면
+순서가 뒤바뀌어 조합되는 현상이 있었음 (예: `ㅋㅣ`를 쳤는데 `ㅣㅋ`로 입력됨).
+
+원인: Z/X/C/V가 `mt LC(Z) Z` 형태의 mod-tap이라 키를 뗄 때까지 tap/hold 판정을
+최대 `tapping-term-ms`(기존 300ms)만큼 미루는데, 그 사이 다른 `&kp` 키가 먼저
+확정되어 출력 순서가 꼬임.
+
+조치: `&mt` 전역 설정에서
+- `tapping-term-ms` 300 → 180
+- `hold-trigger-on-release` 추가 (hold 여부를 누르는 시점이 아니라 떼는 시점에 판정)
+
+근본 해결은 아님 — 좌우 손을 번갈아 치는 롤(예: Z+L)의 구조적 모호성 자체는
+`hold-trigger-key-positions`(반대편 손 키만 hold 후보로 인정) 도입이나, 해당 자리의
+mod-tap을 포기하는 쪽이 더 확실함. 필요 시 추가 검토.
