@@ -16,9 +16,10 @@
 };
 
 &mt {
-    tapping-term-ms = <300>;
+    tapping-term-ms = <180>;
     flavor = "balanced";
     quick-tap-ms = <150>;
+    hold-trigger-on-release;
 };
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
