@@ -56,7 +56,9 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         scroll-layers = <5>;
-        //snipe-layers = <2>;
+        // 가속 모드: 엄지 CapsLock 키(&lt 3 CAPSLOCK) 홀드 중엔 SNIPE_CPI로 전환.
+        // 넘패드/BT 레이어(3)를 그대로 재사용 — 따로 레이어를 만들면 3에 갈 방법이 없어진다.
+        snipe-layers = <3>;
       // automouse-layer = <3>;
     };
 };

@@ -15,7 +15,7 @@ Upstream: `Vzhao-L/zmk-for-charybdis` ← `HeeTuic/zmk-for-charybdis`
 | 0 | Base | 기본 |
 | 1 | *(비어 있음)* | 없음 — 번호 유지용 placeholder |
 | 2 | **Mac 모드** | `Fn + M` (`&tog 2`) — 토글 |
-| 3 | 넘패드 / BT | 왼쪽 가운데 엄지 홀드 (`&lt 3 CAPSLOCK`) |
+| 3 | 넘패드 / BT + **트랙볼 가속** | 왼쪽 가운데 엄지 홀드 (`&lt 3 CAPSLOCK`) — 홀드 중 트랙볼 CPI 400→1200 (`snipe-layers = <3>`, `CONFIG_PMW3610_SNIPE_CPI`) |
 | 4 | *(비어 있음)* | 없음 |
 | 5 | **Fn + 트랙볼 스크롤** | ① apostrophe 아래 키 토글 (`&tog 5`) ② 엄지 Enter 홀드 (`&lt 5 RETURN`) ③ 트랙볼 오른쪽 버튼 홀드 |
 
@@ -75,7 +75,7 @@ Studio로 키맵을 한 번이라도 저장하면 그 키맵이 기기 settings 
 ### 2. `scroll-layers` / `snipe-layers` / `automouse-layer` 는 "최상위 활성 레이어"와 비교한다
 `pmw3610.c`가 `zmk_keymap_highest_layer_active()`를 쓰고 **등호 비교**를 한다. 그래서 Mac 모드(2) 같은 토글 레이어가 켜져 있으면 그보다 낮은 스크롤 레이어가 가려져 스크롤이 죽는다.
 
-**규칙**: 트랙볼 관련 레이어는 **토글 레이어(2)보다 높은 번호**를 쓸 것. 지금 Fn/스크롤이 5인 이유. 나중에 snipe·automouse를 켤 때도 6, 7 등으로.
+**규칙**: 트랙볼 관련 레이어는 **토글 레이어(2)보다 높은 번호**를 쓸 것. 지금 Fn/스크롤이 5인 이유. 가속(snipe)은 3이라 Mac 모드(2)와는 같이 동작하지만, `&tog 5`를 켜둔 동안엔 5에 가려져 가속이 안 된다(그땐 스크롤 모드라 상관없음). automouse를 켤 때도 6, 7 등으로.
 
 ### 3. `&to` 는 다른 레이어를 전부 끈다
 `&to N`은 "기본 레이어를 제외한 모든 레이어를 끔"이라, 토글해둔 Mac 모드까지 같이 죽인다. 레이어 전환은 **`&tog`** 를 쓸 것.
